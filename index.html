@@ -1,0 +1,359 @@
+<!doctype html><html lang="en"><head><title>Algebra 1 Unit 1 Study Video | The GUS Experience</title><meta name="robots" content="noindex"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@600;800&display=swap">
+<style>
+/* Layout: a letterboxed cinema screen. Shots play one at a time (chapter card, big idea, single spotlit step, Your Turn challenge). Chapter scrubber and controls sit under the screen. Single dark look by choice. */
+:root{
+  --void:#04152C; --night:#071D3B; --haze:#0F2D55; --line:#35547F;
+  --ink:#FFFFFF; --dim:#C3CFE2; --gold:#F58426; --ember:#FFB36B; --mint:#FFFFFF;
+  --display:"Barlow Condensed","Arial Narrow",sans-serif;
+  --body:"Atkinson Hyperlegible",system-ui,-apple-system,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{background:var(--void)}
+body{color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:16px;padding-block:18px 40px;display:grid;gap:14px}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.top h1{font-family:var(--display);font-weight:400;letter-spacing:.04em;text-transform:uppercase;font-size:clamp(1.2rem,3vw,1.6rem);margin:0}
+.top span{color:var(--dim);font-size:.9rem}
+
+.screen{position:relative;aspect-ratio:16/9;max-width:100%;background:radial-gradient(120% 90% at 50% 40%,var(--haze),var(--night) 55%,var(--void));border-radius:12px;overflow:hidden;isolation:isolate;box-shadow:0 30px 80px -30px rgba(245,132,38,.18)}
+@media (max-width:700px){.screen{aspect-ratio:auto;height:min(82vh,680px);min-height:560px}}
+.screen:fullscreen{border-radius:0;aspect-ratio:auto}
+#fx{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.spot{position:absolute;inset:-20%;z-index:0;background:radial-gradient(40% 35% at var(--sx,50%) var(--sy,45%),rgba(245,132,38,.16),transparent 70%);transition:background-position 1s;animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate(-3%,-2%)}to{transform:translate(3%,2%)}}
+.lb{position:absolute;left:0;right:0;height:7%;background:#000;z-index:5}
+.lb.t{top:0}.lb.b{bottom:0}
+.hud{position:absolute;top:calc(7% + 10px);left:18px;right:18px;display:flex;justify-content:space-between;z-index:6;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.hud b{color:var(--gold);font-weight:800}
+.shot{position:absolute;inset:7% 0;z-index:3;display:grid;place-items:center;padding:28px 20px 150px;text-align:center}
+.sub{position:absolute;left:50%;bottom:calc(7% + 14px);transform:translateX(-50%);width:min(92%,820px);z-index:6;text-align:center;font-size:clamp(1.15rem,2.8vw,1.55rem);line-height:1.45;background:rgba(0,0,0,.8);padding:8px 14px;border-radius:8px;backdrop-filter:blur(4px)}
+.sub:empty{display:none}
+
+/* title card */
+.chapno{font-family:var(--display);font-size:clamp(5rem,20vw,12rem);line-height:.85;color:transparent;-webkit-text-stroke:2px var(--gold);letter-spacing:.02em}
+.chaptitle{font-family:var(--display);text-transform:uppercase;letter-spacing:.05em;font-size:clamp(1.6rem,5vw,3.2rem);line-height:1;margin-top:10px;text-wrap:balance}
+.kicker{font-family:var(--mono);font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ember);margin-bottom:10px}
+/* idea */
+.idea-lbl{font-family:var(--mono);letter-spacing:.3em;text-transform:uppercase;color:var(--mint);font-size:.8rem;margin-bottom:14px}
+.idea{font-size:clamp(1.3rem,3.6vw,2.2rem);line-height:1.25;max-width:24ch;font-weight:700;text-wrap:balance}
+.idea em{font-style:normal;color:var(--gold)}
+/* step */
+.stepwrap{display:grid;gap:18px;justify-items:center;width:100%}
+.prev{font-family:var(--mono);font-weight:600;color:var(--dim);opacity:.55;font-size:clamp(.9rem,2.2vw,1.25rem);white-space:nowrap;max-width:100%;overflow-x:auto}
+.arrow{color:var(--gold);font-size:1.2rem;opacity:.7;line-height:1}
+.now{font-family:var(--mono);font-weight:800;font-size:clamp(1.5rem,5.2vw,3.4rem);line-height:1.15;max-width:100%;overflow-x:auto;padding:4px 6px;text-shadow:0 0 30px rgba(245,132,38,.15)}
+.now.ans{color:var(--gold);text-shadow:0 0 40px rgba(245,132,38,.45)}
+.hl{color:var(--ember)}
+.stepcount{font-family:var(--mono);font-size:.75rem;letter-spacing:.2em;color:var(--dim)}
+/* quiz */
+.quiz{display:grid;gap:16px;justify-items:center;width:100%}
+.quiz .q{font-family:var(--mono);font-weight:800;font-size:clamp(1.3rem,4.4vw,2.6rem)}
+.choices{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.choice{min-height:56px;font:inherit;font-family:var(--mono);font-weight:800;font-size:clamp(1rem,2.6vw,1.4rem);color:var(--ink);background:rgba(255,255,255,.05);border:2px solid var(--line);border-radius:12px;padding:12px 22px;cursor:pointer;min-width:110px;transition:transform .15s,border-color .2s,background .2s}
+.choice:hover{border-color:var(--gold);transform:translateY(-2px)}
+.choice.right{background:rgba(255,255,255,.18);border-color:var(--mint);color:var(--mint)}
+.choice.wrong{border-color:var(--ember);color:var(--ember);opacity:.7}
+.fb{min-height:1.6em;font-weight:700;font-size:clamp(1rem,2.3vw,1.2rem)}
+/* end */
+.end .big{font-family:var(--display);text-transform:uppercase;font-size:clamp(2.4rem,9vw,5.5rem);line-height:.95;color:var(--gold)}
+.score{font-family:var(--mono);font-size:1rem;color:var(--dim);margin-top:10px}
+
+/* motion */
+.in{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.in2{animation:rise .9s .35s cubic-bezier(.2,.7,.2,1) both}
+.in3{animation:rise .9s .7s cubic-bezier(.2,.7,.2,1) both}
+.zoom{animation:zoom 1.2s cubic-bezier(.2,.7,.2,1) both}
+.focus{animation:focus .8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes zoom{from{opacity:0;transform:scale(1.35);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+@keyframes focus{from{opacity:0;filter:blur(12px);transform:scale(.96)}to{opacity:1;filter:none;transform:none}}
+.flash{position:absolute;inset:0;z-index:4;background:radial-gradient(circle,rgba(245,132,38,.35),transparent 60%);opacity:0;pointer-events:none}
+.flash.go{animation:flash .7s ease-out}
+@keyframes flash{0%{opacity:1}100%{opacity:0}}
+
+/* opener (static so it is complete at rest) */
+.open .eyebrow{font-family:var(--mono);letter-spacing:.35em;text-transform:uppercase;color:var(--ember);font-size:.8rem}
+.open h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.4rem,8vw,5.2rem);line-height:.92;margin:10px 0;letter-spacing:.02em}
+.open h2 span{color:var(--gold)}
+.open p{color:var(--dim);margin:0 auto 18px;max-width:40ch}
+.bigplay{font:inherit;font-family:var(--display);text-transform:uppercase;letter-spacing:.12em;font-size:1.2rem;background:var(--gold);color:var(--void);border:0;border-radius:999px;padding:14px 30px;cursor:pointer;box-shadow:0 0 0 0 rgba(245,132,38,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 18px rgba(245,132,38,0)}100%{box-shadow:0 0 0 0 rgba(245,132,38,0)}}
+
+/* scrubber + controls */
+.scrub{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
+.seg{all:unset;cursor:pointer;display:grid;gap:6px}
+.seg i{display:block;height:5px;border-radius:3px;background:var(--line);overflow:hidden;position:relative}
+.seg i::after{content:"";position:absolute;inset:0;width:var(--p,0%);background:var(--gold);transition:width .4s}
+.seg span{font-family:var(--mono);font-size:.7rem;color:var(--dim);letter-spacing:.06em;text-align:center}
+.seg.cur span{color:var(--gold)}
+.seg:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+.controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{font:inherit;font-size:1.05rem;min-height:48px;font-weight:700;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:999px;padding:9px 16px;cursor:pointer}
+.btn.primary{background:var(--ink);color:var(--void);border-color:var(--ink)}
+.btn.on{border-color:var(--mint);color:var(--mint)}
+.btn:focus-visible,.choice:focus-visible,.bigplay:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.pace{margin-left:auto;display:flex;gap:6px;align-items:center;color:var(--dim);font-size:.9rem}
+select{font:inherit;background:var(--night);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:4px 6px}
+.note{color:var(--dim);font-size:.88rem;margin:0}
+@media (prefers-reduced-motion:reduce){.in,.in2,.in3,.zoom,.focus,.spot,.bigplay,.flash.go{animation:none}}
+.chapno,.chaptitle,.end .big,.bigplay,.top h1,.open h2{font-weight:700;font-style:italic}
+.brand{color:var(--dim);font-size:.9rem;text-align:center;margin:6px 0 0}.brand b{color:var(--gold)}
+</style>
+
+<div class="wrap">
+  <div class="top"><h1>The GUS Experience · Algebra 1 Unit 1</h1><span>8 lessons · go at your own speed</span></div>
+
+  <section class="screen" id="screen">
+    <canvas id="fx" aria-hidden="true"></canvas>
+    <div class="spot" id="spot"></div>
+    <div class="flash" id="flash"></div>
+    <div class="lb t"></div><div class="lb b"></div>
+    <div class="hud"><span id="hudL">Unit 1</span><span id="hudR"></span></div>
+    <div class="shot" id="shot" aria-live="polite">
+      <div class="open">
+        <div class="eyebrow">The GUS Experience · Algebra 1</div>
+        <h2>Linear Equations<br><span>&amp; Problem Solving</span></h2>
+        <p>Eight lessons. One big idea each. Press Next when you are ready for the next step. You can go back and hear any step again.</p>
+        <button class="bigplay" id="bigplay">▶ Start Lesson 1</button>
+      </div>
+    </div>
+    <div class="sub" id="sub"></div>
+  </section>
+
+  <div class="scrub" id="scrub"></div>
+  <div class="controls">
+    <button class="btn" id="prev">◀ Back</button>
+    <button class="btn primary" id="next">Next ▶</button>
+    <button class="btn" id="rep">🔁 Say it again</button>
+    <button class="btn" id="voice" aria-pressed="false">🔈 Read it to me</button>
+    <button class="btn" id="play">▶ Auto-play</button>
+    <button class="btn" id="sfx" aria-pressed="false">♪ Sound FX</button>
+    <button class="btn" id="fs">⛶ Full screen</button>
+    <label class="pace" for="pace">Speed <select id="pace"><option value="1.8">Slower</option><option value="1.4" selected>Slow</option><option value="1">Normal</option><option value="0.75">Fast</option></select></label>
+  </div>
+  <p class="brand"><b>Focus. Plan. Take the shot.</b><br>The GUS Experience is an educational brand of What-A- Rush Media LLC.</p>
+  <p class="note">Nothing moves until you press Next. Press Say it again to hear a step again. Your Turn questions wait for you, and you can try as many times as you need. Tap a lesson number under the screen to jump to it.</p>
+</div>
+
+<script>
+const L=[
+ {tag:"1-1",title:"PEMDAS",full:"Working with numbers using PEMDAS",
+  idea:"Math has an order, like getting dressed. <em>Socks before shoes.</em> Every time.",
+  steps:[
+   ["3 + 4 × (6 − 2)² ÷ 8","Here's our problem. Don't just go left to right. Follow the order."],
+   ["3 + 4 × <span class=hl>(4)</span>² ÷ 8","P is for Parentheses. Do those first. Six minus two is four."],
+   ["3 + 4 × <span class=hl>16</span> ÷ 8","E is for Exponents. Four squared means four times four. Sixteen."],
+   ["3 + <span class=hl>64</span> ÷ 8","M and D. Multiply or divide, whichever comes first from left to right. Four times sixteen is sixty four."],
+   ["3 + <span class=hl>8</span>","Keep going. Sixty four divided by eight is eight."],
+   ["= 11","A and S come last. Three plus eight. Eleven.",1]],
+  quiz:{q:"2 + 3 × 4 = ?",c:["20","14","24"],a:1,why:"Multiply first: 3 × 4 = 12, then 2 + 12 = 14."}},
+ {tag:"1-2",title:"Fractions",full:"Operations with fractions",
+  idea:"You can only add slices that are <em>the same size</em>. Match the bottoms first.",
+  steps:[
+   ["2/3 + 1/4","Thirds and fourths are different size slices. We can't add them yet."],
+   ["8/12 + 3/12","Cut both into twelfths. Multiply top and bottom so the bottoms match."],
+   ["= 11/12","Now add the tops and keep the bottom. Eleven twelfths.",1],
+   ["2/3 ÷ 4/5","Dividing fractions? Remember three words. Keep. Change. Flip."],
+   ["2/3 × 5/4","Keep the first fraction. Change divide to times. Flip the second one."],
+   ["= 10/12 = 5/6","Multiply straight across. Then simplify. Five sixths.",1]],
+  quiz:{q:"1/2 + 1/4 = ?",c:["2/6","3/4","1/8"],a:1,why:"1/2 is the same as 2/4. Then 2/4 + 1/4 = 3/4."}},
+ {tag:"1-3",title:"One Step Equations",full:"One step equations and algebraic properties",
+  idea:"An equation is a <em>balanced scale</em>. Whatever you do to one side, do to the other.",
+  steps:[
+   ["x + 7 = 15","Some number plus seven makes fifteen. Our mission: get x alone."],
+   ["x + 7 <span class=hl>− 7</span> = 15 <span class=hl>− 7</span>","Undo plus seven by subtracting seven. Both sides, to keep it balanced."],
+   ["x = 8","X equals eight.",1],
+   ["4x = 28","Four times some number makes twenty eight."],
+   ["4x <span class=hl>÷ 4</span> = 28 <span class=hl>÷ 4</span>","Undo multiplying by dividing. Same move on both sides."],
+   ["x = 7","X equals seven. Check it. Four times seven is twenty eight.",1]],
+  quiz:{q:"x − 5 = 9.  x = ?",c:["4","14","45"],a:1,why:"Undo minus 5 by adding 5 to both sides: 9 + 5 = 14."}},
+ {tag:"1-4",title:"Multi-Step Equations",full:"Solving multi-step equations",
+  idea:"Like unwrapping a present. Peel off <em>one layer at a time</em> until x is all that's left.",
+  steps:[
+   ["3(x − 2) + 5 = 20","More layers here. Let's clean it up first."],
+   ["3x − 6 + 5 = 20","Distribute. The three multiplies everything inside the parentheses."],
+   ["3x − 1 = 20","Combine the plain numbers. Negative six plus five is negative one."],
+   ["3x = 21","Undo minus one. Add one to both sides."],
+   ["x = 7","Undo times three. Divide both sides by three.",1],
+   ["3(7 − 2) + 5 = 20 ✓","Always check. Three times five, plus five, is twenty. It works."]],
+  quiz:{q:"2x + 3 = 11.  x = ?",c:["4","7","5.5"],a:0,why:"Subtract 3: 2x = 8. Divide by 2: x = 4."}},
+ {tag:"1-5",title:"Fractional Equations",full:"Solving fractional equations",
+  idea:"Fractions are annoying. So <em>make them disappear</em> by multiplying everything by one number.",
+  steps:[
+   ["x/3 + x/4 = 7","Two fractions. Bottoms of three and four."],
+   ["<span class=hl>12</span>·x/3 + <span class=hl>12</span>·x/4 = <span class=hl>12</span>·7","Twelve is the smallest number that three and four both go into. Multiply every piece by twelve."],
+   ["4x + 3x = 84","Boom. The fractions are gone."],
+   ["7x = 84","Combine like terms. Four x plus three x is seven x."],
+   ["x = 12","Divide both sides by seven.",1],
+   ["4 + 3 = 7 ✓","Check it. Twelve over three is four. Twelve over four is three. Four plus three is seven."]],
+  quiz:{q:"x/2 = 6.  x = ?",c:["3","8","12"],a:2,why:"Multiply both sides by 2: x = 12."}},
+ {tag:"1-6",title:"Expressions",full:"Algebraic expressions",
+  idea:"Like terms are <em>matching socks</em>. X's go with x's. Plain numbers go with plain numbers.",
+  steps:[
+   ["5x + 3 − 2x + 8","No equal sign means it's an expression. We simplify it. We don't solve it."],
+   ["(5x − 2x) + (3 + 8)","Group the matching pieces. X terms together. Numbers together."],
+   ["3x + 11","Simplified.",1],
+   ["x = 4  →  3(4) + 11","To evaluate, swap x for the number you're given."],
+   ["= 23","Multiply first, then add. Twelve plus eleven. Twenty three.",1],
+   ["“5 more than twice a number” = 2n + 5","Words to math. Twice a number is two n. Five more means add five."]],
+  quiz:{q:"Simplify 4x + 2x + 5",c:["11x","6x + 5","8x + 5"],a:1,why:"Only the x terms combine: 4x + 2x = 6x. The 5 stays alone."}},
+ {tag:"1-7",title:"Word Problems",full:"Word problems",
+  idea:"Every story has <em>a starting amount</em>, <em>an amount that repeats</em>, and <em>a total</em>.",
+  steps:[
+   ["$25 to join + $15 a month","A gym charges twenty five dollars to join, plus fifteen a month. You paid one hundred thirty total. How many months?"],
+   ["Let m = months","Step one. Name the mystery number with a letter."],
+   ["25 + 15m = 130","The one time fee, plus fifteen for every month, equals the total."],
+   ["15m = 105","Subtract twenty five from both sides."],
+   ["m = 7","Divide both sides by fifteen.",1],
+   ["7 months ✓","Answer in words, with units. Check: twenty five plus one hundred five is one hundred thirty."]],
+  quiz:{q:"$10 to enter + $5 per ride. Spent $35. Rides?",c:["5","7","9"],a:0,why:"10 + 5r = 35, so 5r = 25 and r = 5 rides."}},
+ {tag:"1-8",title:"Literal Equations",full:"Solving literal equations",
+  idea:"A formula full of letters. <em>Same moves as always</em>. You're just moving letters instead of numbers.",
+  steps:[
+   ["d = r · t","Distance equals rate times time. Let's solve for t."],
+   ["d <span class=hl>÷ r</span> = r · t <span class=hl>÷ r</span>","T is being multiplied by r. So divide both sides by r."],
+   ["t = d / r","Time equals distance divided by rate.",1],
+   ["P = 2l + 2w","Perimeter of a rectangle. Now solve for l."],
+   ["P − 2w = 2l","Subtract two w from both sides."],
+   ["l = (P − 2w) / 2","Divide both sides by two.",1]],
+  quiz:{q:"A = l · w.  Solve for l",c:["l = A · w","l = A / w","l = w / A"],a:1,why:"l is multiplied by w, so divide both sides by w."}}
+];
+
+/* build the shot list */
+const shots=[];
+L.forEach((l,li)=>{
+  shots.push({t:"title",li});
+  shots.push({t:"idea",li});
+  l.steps.forEach((s,k)=>shots.push({t:"step",li,k}));
+  shots.push({t:"quiz",li});
+});
+shots.push({t:"end"});
+
+const $=id=>document.getElementById(id);
+const shotEl=$("shot"),sub=$("sub"),hudL=$("hudL"),hudR=$("hudR"),pace=$("pace"),scrub=$("scrub");
+let i=-1,playing=false,timer=null,voiceOn=false,sfxOn=false,score=0,answered={},tries=0;
+
+L.forEach((l,li)=>{
+  const b=document.createElement("button");b.className="seg";b.setAttribute("aria-label","Lesson "+l.tag+": "+l.full);
+  b.innerHTML=`<i></i><span>${l.tag}</span>`;b.onclick=()=>jump(shots.findIndex(s=>s.li===li));scrub.appendChild(b);
+});
+
+/* ---------- sound (Web Audio, starts after a click) ---------- */
+let ac=null;
+function audio(){ if(!ac){ try{ac=new (window.AudioContext||window.webkitAudioContext)();}catch(e){} } if(ac&&ac.state==="suspended") ac.resume(); return ac; }
+function tone(f,d,type="sine",v=.08,when=0,slide){ const a=audio(); if(!a||!sfxOn) return;
+  const o=a.createOscillator(),g=a.createGain(),t=a.currentTime+when; o.type=type; o.frequency.setValueAtTime(f,t);
+  if(slide) o.frequency.exponentialRampToValueAtTime(slide,t+d);
+  g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(v,t+.02); g.gain.exponentialRampToValueAtTime(0.0001,t+d);
+  o.connect(g).connect(a.destination); o.start(t); o.stop(t+d+.05); }
+const fx={
+  boom(){ tone(70,1.2,"sine",.25,0,38); tone(140,.9,"triangle",.05,0,70); },
+  whoosh(){ tone(300,.35,"sawtooth",.025,0,1200); },
+  tick(){ tone(880,.08,"square",.03); },
+  ding(){ tone(660,.25,"sine",.1); tone(990,.4,"sine",.08,.12); },
+  win(){ [523,659,784,1046].forEach((f,k)=>tone(f,.35,"triangle",.08,k*.11)); },
+  miss(){ tone(220,.3,"sawtooth",.04,0,150); }
+};
+
+/* ---------- ambient particles ---------- */
+const cv=$("fx"),cx=cv.getContext("2d");let P=[];
+function sizeCv(){ const r=cv.getBoundingClientRect(),d=Math.min(2,window.devicePixelRatio||1); cv.width=r.width*d; cv.height=r.height*d; cx.setTransform(d,0,0,d,0,0);
+  P=Array.from({length:Math.round(r.width/14)},()=>({x:Math.random()*r.width,y:Math.random()*r.height,r:Math.random()*1.6+.3,v:Math.random()*.25+.05,a:Math.random()*.5+.1})); }
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function loop(){ const r=cv.getBoundingClientRect(); cx.clearRect(0,0,r.width,r.height);
+  for(const p of P){ p.y-=p.v; if(p.y<-4){p.y=r.height+4;p.x=Math.random()*r.width;} cx.globalAlpha=p.a; cx.fillStyle="#F58426"; cx.beginPath(); cx.arc(p.x,p.y,p.r,0,6.3); cx.fill(); }
+  if(!reduce) requestAnimationFrame(loop); }
+sizeCv(); loop(); addEventListener("resize",sizeCv);
+
+/* ---------- rendering ---------- */
+function flash(){ return; const f=$("flash"); f.classList.remove("go"); void f.offsetWidth; f.classList.add("go"); }
+function setSub(t){ sub.innerHTML=t||""; }
+function render(){
+  const s=shots[i]; const l=L[s.li];
+  if(s.t!=="end"){ hudL.innerHTML=`Lesson <b>${l.tag}</b> · ${l.full}`; }
+  [...scrub.children].forEach((b,k)=>{
+    const idx=shots.map((x,n)=>x.li===k?n:-1).filter(n=>n>=0); const a=idx[0],z=idx[idx.length-1];
+    const p= i>z?100: i<a?0: Math.round(100*(i-a+1)/(z-a+1));
+    b.querySelector("i").style.setProperty("--p",p+"%"); b.classList.toggle("cur",s.li===k);
+  });
+  $("spot").style.setProperty("--sx",(40+Math.random()*20)+"%");
+  if(s.t==="title"){
+    hudR.textContent="Chapter "+(s.li+1)+" of 8";
+    shotEl.innerHTML=`<div><div class="kicker in">Chapter ${s.li+1}</div><div class="chapno zoom">${l.tag}</div><div class="chaptitle in2">${l.title}</div></div>`;
+    setSub(""); fx.boom(); flash(); return l.full;
+  }
+  if(s.t==="idea"){
+    hudR.textContent="The big idea";
+    shotEl.innerHTML=`<div><div class="idea-lbl in">💡 The big idea</div><div class="idea in2">${l.idea}</div></div>`;
+    setSub(""); fx.whoosh(); return l.idea;
+  }
+  if(s.t==="step"){
+    const st=l.steps[s.k],pvs=l.steps.slice(Math.max(0,s.k-2),s.k).map(x=>x[0]);
+    hudR.textContent="Step "+(s.k+1)+" of "+l.steps.length;
+    shotEl.innerHTML=`<div class="stepwrap">${pvs.map(p=>`<div class="prev">${p}</div><div class="arrow">▼</div>`).join("")}<div class="now focus${st[2]?" ans":""}">${st[0]}</div></div>`;
+    setSub(st[1]); st[2]?(fx.ding(),flash()):fx.tick(); return st[1];
+  }
+  if(s.t==="quiz"){
+    const q=l.quiz; tries=0; hudR.textContent="Your turn";
+    shotEl.innerHTML=`<div class="quiz"><div class="kicker in">⚡ Your turn</div><div class="q in2">${q.q}</div>
+      <div class="choices in3">${q.c.map((c,n)=>`<button class="choice" data-n="${n}">${c}</button>`).join("")}</div><div class="fb" id="fb"></div></div>`;
+    setSub("Tap your answer. Take your time. You can try again.");
+    shotEl.querySelectorAll(".choice").forEach(b=>b.onclick=()=>answer(+b.dataset.n,b));
+    fx.whoosh(); return "Your turn. "+q.q.replace("=","equals").replace("?","what");
+  }
+  hudL.textContent="Unit 1 complete"; hudR.textContent="";
+  shotEl.innerHTML=`<div class="end"><div class="kicker in">That's a wrap</div><div class="big zoom">You finished<br>Unit 1</div>
+    <div class="score in2">Your Turn score: ${score} of 8</div><p class="note in3" style="margin-top:14px">Tap any chapter below to rewatch it.</p></div>`;
+  setSub(""); fx.win(); flash(); setPlay(false,true); return "You finished Unit 1. Great work.";
+}
+function answer(n,btn){
+  const s=shots[i],q=L[s.li].quiz,fb=$("fb");
+  if(n===q.a){
+    btn.classList.add("right"); shotEl.querySelectorAll(".choice").forEach(b=>b.disabled=true);
+    if(!answered[s.li]){ answered[s.li]=1; score++; }
+    fb.style.color="var(--mint)"; fb.textContent="✓ Nice work! "+q.why+(playing?"":" Press Next to keep going."); setSub(q.why); fx.win(); flash();
+    clearTimeout(timer); say("Nice work. "+q.why, ()=>{ if(playing) next(); }, 1.6);
+  } else {
+    if(answered[s.li]===undefined) answered[s.li]=0;
+    btn.classList.add("wrong"); btn.disabled=true; fb.style.color="var(--ember)"; tries++; fb.textContent=tries>=2?"Not quite. Here is a hint: "+q.why:"Not quite. That is okay. Look again and try another one."; if(tries>=2) setSub(q.why); fx.miss();
+  }
+}
+
+/* ---------- timing & narration ---------- */
+function say(text,cb,mult=1){
+  clearTimeout(timer); const clean=String(text).replace(/<[^>]+>/g,"").replace(/[·]/g," times ");
+  const wait=()=>{ timer=setTimeout(cb,Math.max(2600,clean.length*58)*(+pace.value)*mult); };
+  if(!voiceOn||!("speechSynthesis" in window)) return wait();
+  try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(clean); u.rate=.95/(+pace.value);
+    u.onend=()=>{timer=setTimeout(cb,500*(+pace.value));}; u.onerror=wait; speechSynthesis.speak(u);
+  }catch(e){ wait(); }
+}
+function stopAll(){ clearTimeout(timer); try{speechSynthesis.cancel();}catch(e){} }
+function show(n){
+  stopAll(); i=Math.max(0,Math.min(shots.length-1,n)); const line=render();
+  if(shots[i].t==="quiz"){ if(voiceOn) say(line,()=>{}); return; }   // quiz waits for an answer
+  if(playing) say(line,next,shots[i].t==="title"?.8:1); else if(voiceOn) say(line,()=>{});
+}
+function next(){ if(i<shots.length-1) show(i+1); }
+function jump(n){ audio(); show(n); }
+function setPlay(p,silent){ playing=p; $("play").textContent=p?"❚❚ Stop auto-play":"▶ Auto-play";
+  if(silent) return; audio(); if(p){ if(i<0||shots[i].t==="end"){ score=0; answered={}; show(0); } else show(i); } else stopAll(); }
+
+$("bigplay").onclick=()=>{ audio(); score=0; answered={}; show(0); };
+$("rep").onclick=()=>{ audio(); if(i>=0) show(i); };
+$("play").onclick=()=>setPlay(!playing);
+$("next").onclick=()=>{ audio(); if(i<0) show(0); else next(); };
+$("prev").onclick=()=>{ audio(); if(i>0) show(i-1); };
+$("voice").onclick=e=>{ voiceOn=!voiceOn; e.currentTarget.classList.toggle("on",voiceOn); e.currentTarget.setAttribute("aria-pressed",voiceOn); if(!voiceOn) try{speechSynthesis.cancel();}catch(_){} if(playing&&i>=0) show(i); };
+$("sfx").onclick=e=>{ sfxOn=!sfxOn; e.currentTarget.classList.toggle("on",sfxOn); e.currentTarget.setAttribute("aria-pressed",sfxOn); };
+$("fs").onclick=()=>{ const sc=$("screen"); try{ document.fullscreenElement?document.exitFullscreen():sc.requestFullscreen().catch(()=>{}); }catch(e){} };
+document.addEventListener("fullscreenchange",()=>setTimeout(sizeCv,100));
+document.addEventListener("keydown",e=>{ if(e.target.tagName==="SELECT"||e.target.classList.contains("choice")) return;
+  if(e.key===" "){e.preventDefault();setPlay(!playing);} if(e.key==="ArrowRight") $("next").click(); if(e.key==="ArrowLeft") $("prev").click(); });
+</script>
+
+</body></html>
