@@ -129,7 +129,7 @@ select{font:inherit;background:var(--night);color:var(--ink);border:1px solid va
     <button class="btn" id="prev">◀ Back</button>
     <button class="btn primary" id="next">Next ▶</button>
     <button class="btn" id="rep">🔁 Say it again</button>
-    <button class="btn" id="voice" aria-pressed="false">🔈 Read it to me</button>
+    <button class="btn on" id="voice" aria-pressed="true">🔈 Hear it</button>
     <button class="btn" id="play">▶ Auto-play</button>
     <button class="btn" id="sfx" aria-pressed="false">♪ Sound FX</button>
     <button class="btn" id="fs">⛶ Full screen</button>
@@ -235,7 +235,7 @@ shots.push({t:"end"});
 
 const $=id=>document.getElementById(id);
 const shotEl=$("shot"),sub=$("sub"),hudL=$("hudL"),hudR=$("hudR"),pace=$("pace"),scrub=$("scrub");
-let i=-1,playing=false,timer=null,voiceOn=false,sfxOn=false,score=0,answered={},tries=0;
+let i=-1,playing=false,timer=null,voiceOn=true,sfxOn=false,score=0,answered={},tries=0;
 
 L.forEach((l,li)=>{
   const b=document.createElement("button");b.className="seg";b.setAttribute("aria-label","Lesson "+l.tag+": "+l.full);
@@ -316,7 +316,7 @@ function answer(n,btn){
     btn.classList.add("right"); shotEl.querySelectorAll(".choice").forEach(b=>b.disabled=true);
     if(!answered[s.li]){ answered[s.li]=1; score++; }
     fb.style.color="var(--mint)"; fb.textContent="✓ Nice work! "+q.why+(playing?"":" Press Next to keep going."); setSub(q.why); fx.win(); flash();
-    clearTimeout(timer); say("Nice work. "+q.why, ()=>{ if(playing) next(); }, 1.6);
+    clearTimeout(timer); say("Nice work. "+q.why, ()=>{ if(playing) next(); }, 1.6, s.li+"-ok");
   } else {
     if(answered[s.li]===undefined) answered[s.li]=0;
     btn.classList.add("wrong"); btn.disabled=true; fb.style.color="var(--ember)"; tries++; fb.textContent=tries>=2?"Not quite. Here is a hint: "+q.why:"Not quite. That is okay. Look again and try another one."; if(tries>=2) setSub(q.why); fx.miss();
@@ -324,19 +324,24 @@ function answer(n,btn){
 }
 
 /* ---------- timing & narration ---------- */
-function say(text,cb,mult=1){
-  clearTimeout(timer); const clean=String(text).replace(/<[^>]+>/g,"").replace(/[·]/g," times ");
+let curAudio=null;
+function stopAudio(){ if(curAudio){ curAudio.onended=null; curAudio.onerror=null; curAudio.pause(); curAudio=null; } }
+function keyFor(s){ return s.t==="end"?"end":s.t==="title"?s.li+"-title":s.t==="idea"?s.li+"-idea":s.t==="step"?s.li+"-s"+s.k:s.li+"-q"; }
+function say(text,cb,mult=1,key){
+  clearTimeout(timer); stopAudio(); const clean=String(text).replace(/<[^>]+>/g," ");
   const wait=()=>{ timer=setTimeout(cb,Math.max(2600,clean.length*58)*(+pace.value)*mult); };
-  if(!voiceOn||!("speechSynthesis" in window)) return wait();
-  try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(clean); u.rate=.95/(+pace.value);
-    u.onend=()=>{timer=setTimeout(cb,500*(+pace.value));}; u.onerror=wait; speechSynthesis.speak(u);
-  }catch(e){ wait(); }
+  if(!voiceOn||!key) return wait();
+  const a=new Audio("audio/"+key+".mp3"); curAudio=a;
+  a.onended=()=>{ curAudio=null; timer=setTimeout(cb,500*(+pace.value)); };
+  a.onerror=()=>{ curAudio=null; wait(); };
+  const p=a.play(); if(p&&p.catch) p.catch(()=>{ curAudio=null; wait(); });
 }
-function stopAll(){ clearTimeout(timer); try{speechSynthesis.cancel();}catch(e){} }
+function stopAll(){ clearTimeout(timer); stopAudio(); }
 function show(n){
   stopAll(); i=Math.max(0,Math.min(shots.length-1,n)); const line=render();
-  if(shots[i].t==="quiz"){ if(voiceOn) say(line,()=>{}); return; }   // quiz waits for an answer
-  if(playing) say(line,next,shots[i].t==="title"?.8:1); else if(voiceOn) say(line,()=>{});
+  const key=keyFor(shots[i]);
+  if(shots[i].t==="quiz"){ if(voiceOn) say(line,()=>{},1,key); return; }   // quiz waits for an answer
+  if(playing) say(line,next,shots[i].t==="title"?.8:1,key); else if(voiceOn) say(line,()=>{},1,key);
 }
 function next(){ if(i<shots.length-1) show(i+1); }
 function jump(n){ audio(); show(n); }
@@ -348,7 +353,7 @@ $("rep").onclick=()=>{ audio(); if(i>=0) show(i); };
 $("play").onclick=()=>setPlay(!playing);
 $("next").onclick=()=>{ audio(); if(i<0) show(0); else next(); };
 $("prev").onclick=()=>{ audio(); if(i>0) show(i-1); };
-$("voice").onclick=e=>{ voiceOn=!voiceOn; e.currentTarget.classList.toggle("on",voiceOn); e.currentTarget.setAttribute("aria-pressed",voiceOn); if(!voiceOn) try{speechSynthesis.cancel();}catch(_){} if(playing&&i>=0) show(i); };
+$("voice").onclick=e=>{ voiceOn=!voiceOn; e.currentTarget.classList.toggle("on",voiceOn); e.currentTarget.setAttribute("aria-pressed",voiceOn); if(!voiceOn) stopAudio(); if(playing&&i>=0) show(i); };
 $("sfx").onclick=e=>{ sfxOn=!sfxOn; e.currentTarget.classList.toggle("on",sfxOn); e.currentTarget.setAttribute("aria-pressed",sfxOn); };
 $("fs").onclick=()=>{ const sc=$("screen"); try{ document.fullscreenElement?document.exitFullscreen():sc.requestFullscreen().catch(()=>{}); }catch(e){} };
 document.addEventListener("fullscreenchange",()=>setTimeout(sizeCv,100));
