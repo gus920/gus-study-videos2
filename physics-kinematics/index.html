@@ -396,7 +396,7 @@ function answer(n,btn){
 /* ---------- timing & narration ---------- */
 let curAudio=null;
 function stopAudio(){ if(curAudio){ curAudio.onended=null; curAudio.onerror=null; curAudio.pause(); curAudio=null; } }
-function keyFor(s){ return s.t==="end"?"end":s.t==="title"?s.li+"-title":s.t==="idea"?s.li+"-idea":s.t==="step"?s.li+"-s"+s.k:s.li+"-q"; }
+function keyFor(s){ return s.t==="end"?"end":s.t==="map"?(s.end?"map-end":"map-start"):s.t==="title"?s.li+"-title":s.t==="idea"?s.li+"-idea":s.t==="step"?s.li+"-s"+s.k:s.li+"-q"; }
 function say(text,cb,mult=1,key){
   clearTimeout(timer); stopAudio(); const clean=String(text).replace(/<[^>]+>/g," ");
   const wait=()=>{ timer=setTimeout(cb,Math.max(2600,clean.length*58)*(+pace.value)*mult); };
