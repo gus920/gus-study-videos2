@@ -1,0 +1,444 @@
+<!doctype html><html lang="en"><head><title>Chemistry Exam 2 Step-by-Step Video | The GUS Experience</title><meta name="robots" content="noindex"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@600;800&display=swap">
+<style>
+/* Layout: a letterboxed cinema screen. Shots play one at a time (chapter card, big idea, single spotlit step, Your Turn challenge). Chapter scrubber and controls sit under the screen. Single dark look by choice. */
+:root{
+  --void:#04152C; --night:#071D3B; --haze:#0F2D55; --line:#35547F;
+  --ink:#FFFFFF; --dim:#C3CFE2; --gold:#F58426; --ember:#FFB36B; --mint:#FFFFFF;
+  --display:"Barlow Condensed","Arial Narrow",sans-serif;
+  --body:"Atkinson Hyperlegible",system-ui,-apple-system,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{background:var(--void)}
+body{color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:16px;padding-block:18px 40px;display:grid;gap:14px}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.top h1{font-family:var(--display);font-weight:400;letter-spacing:.04em;text-transform:uppercase;font-size:clamp(1.2rem,3vw,1.6rem);margin:0}
+.top span{color:var(--dim);font-size:.9rem}
+
+.screen{position:relative;aspect-ratio:16/9;max-width:100%;background:radial-gradient(120% 90% at 50% 40%,var(--haze),var(--night) 55%,var(--void));border-radius:12px;overflow:hidden;isolation:isolate;box-shadow:0 30px 80px -30px rgba(245,132,38,.18)}
+@media (max-width:700px){.screen{aspect-ratio:auto;height:min(82vh,680px);min-height:560px}}
+.screen:fullscreen{border-radius:0;aspect-ratio:auto}
+#fx{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.spot{position:absolute;inset:-20%;z-index:0;background:radial-gradient(40% 35% at var(--sx,50%) var(--sy,45%),rgba(245,132,38,.16),transparent 70%);transition:background-position 1s;animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate(-3%,-2%)}to{transform:translate(3%,2%)}}
+.lb{position:absolute;left:0;right:0;height:7%;background:#000;z-index:5}
+.lb.t{top:0}.lb.b{bottom:0}
+.hud{position:absolute;top:calc(7% + 10px);left:18px;right:18px;display:flex;justify-content:space-between;z-index:6;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.hud b{color:var(--gold);font-weight:800}
+.shot{position:absolute;inset:7% 0;z-index:3;display:grid;place-items:center;padding:28px 20px 150px;text-align:center}
+.sub{position:absolute;left:50%;bottom:calc(7% + 14px);transform:translateX(-50%);width:min(92%,820px);z-index:6;text-align:center;font-size:clamp(1.15rem,2.8vw,1.55rem);line-height:1.45;background:rgba(0,0,0,.8);padding:8px 14px;border-radius:8px;backdrop-filter:blur(4px)}
+.sub:empty{display:none}
+
+/* title card */
+.chapno{font-family:var(--display);font-size:clamp(5rem,20vw,12rem);line-height:.85;color:transparent;-webkit-text-stroke:2px var(--gold);letter-spacing:.02em}
+.chaptitle{font-family:var(--display);text-transform:uppercase;letter-spacing:.05em;font-size:clamp(1.6rem,5vw,3.2rem);line-height:1;margin-top:10px;text-wrap:balance}
+.kicker{font-family:var(--mono);font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ember);margin-bottom:10px}
+/* idea */
+.idea-lbl{font-family:var(--mono);letter-spacing:.3em;text-transform:uppercase;color:var(--mint);font-size:.8rem;margin-bottom:14px}
+.idea{font-size:clamp(1.3rem,3.6vw,2.2rem);line-height:1.25;max-width:24ch;font-weight:700;text-wrap:balance}
+.idea em{font-style:normal;color:var(--gold)}
+/* step */
+.stepwrap{display:grid;gap:18px;justify-items:center;width:100%}
+.prev{font-family:var(--mono);font-weight:600;color:var(--dim);opacity:.55;font-size:clamp(.9rem,2.2vw,1.25rem);white-space:nowrap;max-width:100%;overflow-x:auto}
+.arrow{color:var(--gold);font-size:1.2rem;opacity:.7;line-height:1}
+.now{font-family:var(--mono);font-weight:800;font-size:clamp(1.5rem,5.2vw,3.4rem);line-height:1.15;max-width:100%;overflow-x:auto;padding:4px 6px;text-shadow:0 0 30px rgba(245,132,38,.15)}
+.now.ans{color:var(--gold);text-shadow:0 0 40px rgba(245,132,38,.45)}
+.hl{color:var(--ember)}
+.stepcount{font-family:var(--mono);font-size:.75rem;letter-spacing:.2em;color:var(--dim)}
+/* quiz */
+.quiz{display:grid;gap:16px;justify-items:center;width:100%}
+.quiz .q{font-family:var(--mono);font-weight:800;font-size:clamp(1.3rem,4.4vw,2.6rem)}
+.choices{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.choice{min-height:56px;font:inherit;font-family:var(--mono);font-weight:800;font-size:clamp(1rem,2.6vw,1.4rem);color:var(--ink);background:rgba(255,255,255,.05);border:2px solid var(--line);border-radius:12px;padding:12px 22px;cursor:pointer;min-width:110px;transition:transform .15s,border-color .2s,background .2s}
+.choice:hover{border-color:var(--gold);transform:translateY(-2px)}
+.choice.right{background:rgba(255,255,255,.18);border-color:var(--mint);color:var(--mint)}
+.choice.wrong{border-color:var(--ember);color:var(--ember);opacity:.7}
+.fb{min-height:1.6em;font-weight:700;font-size:clamp(1rem,2.3vw,1.2rem)}
+/* end */
+.end .big{font-family:var(--display);text-transform:uppercase;font-size:clamp(2.4rem,9vw,5.5rem);line-height:.95;color:var(--gold)}
+.score{font-family:var(--mono);font-size:1rem;color:var(--dim);margin-top:10px}
+
+/* motion */
+.in{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.in2{animation:rise .9s .35s cubic-bezier(.2,.7,.2,1) both}
+.in3{animation:rise .9s .7s cubic-bezier(.2,.7,.2,1) both}
+.zoom{animation:zoom 1.2s cubic-bezier(.2,.7,.2,1) both}
+.focus{animation:focus .8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes zoom{from{opacity:0;transform:scale(1.35);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+@keyframes focus{from{opacity:0;filter:blur(12px);transform:scale(.96)}to{opacity:1;filter:none;transform:none}}
+.flash{position:absolute;inset:0;z-index:4;background:radial-gradient(circle,rgba(245,132,38,.35),transparent 60%);opacity:0;pointer-events:none}
+.flash.go{animation:flash .7s ease-out}
+@keyframes flash{0%{opacity:1}100%{opacity:0}}
+
+/* opener (static so it is complete at rest) */
+.open .eyebrow{font-family:var(--mono);letter-spacing:.35em;text-transform:uppercase;color:var(--ember);font-size:.8rem}
+.open h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.4rem,8vw,5.2rem);line-height:.92;margin:10px 0;letter-spacing:.02em}
+.open h2 span{color:var(--gold)}
+.open p{color:var(--dim);margin:0 auto 18px;max-width:40ch}
+.bigplay{font:inherit;font-family:var(--display);text-transform:uppercase;letter-spacing:.12em;font-size:1.2rem;background:var(--gold);color:var(--void);border:0;border-radius:999px;padding:14px 30px;cursor:pointer;box-shadow:0 0 0 0 rgba(245,132,38,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 18px rgba(245,132,38,0)}100%{box-shadow:0 0 0 0 rgba(245,132,38,0)}}
+
+/* scrubber + controls */
+.scrub{display:grid;grid-template-columns:repeat(12,1fr);gap:4px}
+.seg{all:unset;cursor:pointer;display:grid;gap:6px}
+.seg i{display:block;height:5px;border-radius:3px;background:var(--line);overflow:hidden;position:relative}
+.seg i::after{content:"";position:absolute;inset:0;width:var(--p,0%);background:var(--gold);transition:width .4s}
+.seg span{font-family:var(--mono);font-size:.7rem;color:var(--dim);letter-spacing:.06em;text-align:center}
+.seg.cur span{color:var(--gold)}
+.seg:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+.controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{font:inherit;font-size:1.05rem;min-height:48px;font-weight:700;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:999px;padding:9px 16px;cursor:pointer}
+.btn.primary{background:var(--ink);color:var(--void);border-color:var(--ink)}
+.btn.on{border-color:var(--mint);color:var(--mint)}
+.btn:focus-visible,.choice:focus-visible,.bigplay:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.pace{margin-left:auto;display:flex;gap:6px;align-items:center;color:var(--dim);font-size:.9rem}
+select{font:inherit;background:var(--night);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:4px 6px}
+.note{color:var(--dim);font-size:.88rem;margin:0}
+@media (prefers-reduced-motion:reduce){.in,.in2,.in3,.zoom,.focus,.spot,.bigplay,.flash.go{animation:none}}
+.chapno,.chaptitle,.end .big,.bigplay,.top h1,.open h2{font-weight:700;font-style:italic}
+.brand{color:var(--dim);font-size:.9rem;text-align:center;margin:6px 0 0}.brand b{color:var(--gold)}
+.map{display:grid;gap:14px;width:100%;max-width:880px}
+.mrow{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap}
+.mnode{border:2px solid var(--gold);border-radius:14px;padding:10px 12px;background:rgba(255,255,255,.05);display:grid;gap:2px;flex:1 1 150px;max-width:240px;text-align:center}
+.mnode b{font-family:var(--display);font-style:italic;font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:clamp(1.2rem,3.2vw,1.8rem);color:var(--gold);line-height:1}
+.mnode span{font-size:clamp(.82rem,2vw,1rem);line-height:1.3}
+.mnode i{font-style:normal;color:var(--ember);font-size:clamp(.8rem,1.9vw,.95rem)}
+.mnode.alt{border-color:var(--line);max-width:280px}
+.mnode.alt b{color:var(--ink);font-size:clamp(1rem,2.6vw,1.3rem)}
+.marr{color:var(--gold);font-family:var(--mono);font-size:.75rem;text-align:center;line-height:1.2}
+.mrow.small .mnode span{font-size:clamp(.74rem,1.8vw,.9rem)}
+.marr u{text-decoration:none;display:inline-block}
+@media (max-width:700px){.mrow{gap:2px}.marr{width:100%}.marr u{transform:rotate(90deg)}.mnode{flex-basis:100%;max-width:none;padding:5px 10px}.mnode i{display:none}.mrow.small .mnode{flex:1 1 28%}.mrow.small .mnode span{display:none}.map{gap:6px}.shot{padding:8px 14px 120px}}
+</style>
+
+<div class="wrap">
+  <div class="top"><h1>The GUS Experience · Chemistry Exam 2: Step by Step</h1><span>12 lessons · go at your own speed</span></div>
+
+  <section class="screen" id="screen">
+    <canvas id="fx" aria-hidden="true"></canvas>
+    <div class="spot" id="spot"></div>
+    <div class="flash" id="flash"></div>
+    <div class="lb t"></div><div class="lb b"></div>
+    <div class="hud"><span id="hudL">Exam 2 review</span><span id="hudR"></span></div>
+    <div class="shot" id="shot" aria-live="polite">
+      <div class="open">
+        <div class="eyebrow">The GUS Experience · Chemistry</div>
+        <h2>Step by Step<br><span>Review Map</span></h2>
+        <p>Short steps. One idea at a time. Press Next when you are ready. Press Back to see a step again. There is no timer and no rush.</p>
+        <button class="bigplay" id="bigplay">▶ Start with the map</button>
+      </div>
+    </div>
+    <div class="sub" id="sub"></div>
+  </section>
+
+  <div class="scrub" id="scrub"></div>
+  <div class="controls">
+    <button class="btn" id="prev">◀ Back</button>
+    <button class="btn primary" id="next">Next ▶</button>
+    <button class="btn" id="rep">🔁 Say it again</button>
+    <button class="btn" id="voice" aria-pressed="false" hidden>🔈 Hear it</button>
+    <button class="btn" id="play">▶ Auto-play</button>
+    <button class="btn" id="sfx" aria-pressed="false">♪ Sound FX</button>
+    <button class="btn" id="fs">⛶ Full screen</button>
+    <label class="pace" for="pace">Speed <select id="pace"><option value="1.8" selected>Slower</option><option value="1.4">Slow</option><option value="1">Normal</option><option value="0.75">Fast</option></select></label>
+  </div>
+  <p class="brand"><b>Focus. Plan. Take the shot.</b><br>The GUS Experience is an educational brand of What-A- Rush Media LLC.</p>
+  <p class="note">Nothing moves until you press Next. Press Say it again to see a step again. Your Turn questions wait for you, and you can try as many times as you need. Tap a lesson number under the screen to jump to it.</p>
+</div>
+
+<script>
+const L=[
+ {tag:"1",title:"Classification of Matter",full:"Elements, compounds, mixtures",
+  idea:"Think <em>Lego</em>. One kind of brick. A set built one way. A bag of mixed pieces.",
+  steps:[
+   ["Pure substance =<br>same all the way through","A pure substance is the same all the way through. It has a fixed recipe."],
+   ["Element = one kind of atom<br>(a pile of one Lego brick)<br>Mg · O₂","An element has only one kind of atom. Like a pile of one kind of Lego brick."],
+   ["Compound = elements locked<br>in a FIXED ratio<br>H₂O is always 2 H : 1 O","A compound is different elements locked together in a fixed ratio. Like a Lego set, built the same way every time."],
+   ["Mixture = a bag of mixed pieces<br>any amounts","A mixture is just mixed together. You can add more or less of each part."],
+   ["Looks the same everywhere =<br>HOMOGENEOUS<br>NaCl(aq)","Salt water looks the same everywhere. That is homogeneous. The symbol aq means dissolved in water."],
+   ["You can see the parts =<br>HETEROGENEOUS<br>sand + water","If you can see the different parts, it is heterogeneous. Like sand and water."],
+   ["One capital letter = element<br>Two or more = compound","A shortcut. One capital letter is an element. Two or more capital letters is a compound.",1]],
+  quiz:{q:"CH₃OH has the capital letters C, H, and O. Element or compound?",c:["Compound","Element"],a:0,why:"More than one capital letter means a compound."}},
+
+ {tag:"2",title:"Energy",full:"Energy and heat",
+  idea:"Energy is like <em>money in your pockets</em>. You can move it around, but the total stays the same.",
+  steps:[
+   ["Energy = ability to do work<br>Unit: joule (J)","Energy is the ability to do work. The unit is the joule."],
+   ["Kinetic energy (KE)<br>= motion<br>a running player","Kinetic energy is energy of motion. Like a player running."],
+   ["Potential energy (PE)<br>= stored<br>a ball at the top of stairs","Potential energy is stored energy. Like a ball sitting at the top of the stairs. In chemistry it is stored in bonds."],
+   ["Heat moves HOT → COLD<br>a hot pizza cooling","Heat moves from hot to cold. Like a hot pizza cooling on the table. Cold does not move."],
+   ["70 °C soup, 20 °C spoon<br>heat → into the spoon","A cool spoon goes into hot soup. Heat flows from the soup to the spoon."],
+   ["Energy lost = energy gained<br>Total stays the same","This is conservation of energy. It is never created or destroyed. It only changes form.",1]],
+  quiz:{q:"A 40 °C block goes into 80 °C water. Which way does heat flow?",c:["Water to block","Block to water"],a:0,why:"Heat flows from higher temperature to lower temperature."}},
+
+ {tag:"3",title:"Temperature",full:"Celsius and kelvin",
+  idea:"Temperature is <em>how fast the dancers are moving</em>. Faster dancing means hotter.",
+  steps:[
+   ["Temperature =<br>average KE","Temperature measures the average energy of motion of the particles."],
+   ["Table T:<br>K = °C + 273","Table T gives the rule. Add two seventy three to go from Celsius to kelvin."],
+   ["Go back:<br>°C = K − 273","To go back, subtract two seventy three."],
+   ["25 °C + 273 = 298 K","Example. Twenty five plus two seventy three is two ninety eight kelvin."],
+   ["Water freezes: 0 °C = 273 K<br>Water boils: 100 °C = 373 K","Water freezes at zero Celsius, which is two seventy three kelvin. It boils at one hundred Celsius, which is three seventy three kelvin."],
+   ["K has no degree sign<br>K is never negative","Write 273 K. No degree sign. Kelvin is never negative.",1]],
+  quiz:{q:"What is 300. K in degrees Celsius?",c:["27 °C","573 °C"],a:0,why:"300 minus 273 is 27 °C."}},
+
+ {tag:"4",title:"Heating & Cooling Curves",full:"Hills and rest stops",
+  idea:"A curve is like <em>a road trip</em>. Some parts are hills. Some parts are flat rest stops.",
+  steps:[
+   ["HILL (slope) =<br>one phase<br>temperature changes","A slope is a hill. It is one phase. The temperature changes."],
+   ["On a hill:<br>KE changes<br>PE stays the same","On a hill, the kinetic energy changes. The potential energy stays the same."],
+   ["REST STOP (flat) =<br>phase change<br>temperature stays the same","A flat part is a rest stop. The phase is changing. The temperature stays the same."],
+   ["On a flat:<br>KE same<br>PE changes","On a flat, kinetic energy stays the same. The energy goes into potential energy."],
+   ["Heating: solid → melt<br>→ liquid → boil → gas","A heating curve goes solid, melting, liquid, boiling, gas. The first flat is melting. The second flat is boiling."],
+   ["Boiling flat is LONGER<br>2260 J/g vs 334 J/g","The boiling flat is longer. Boiling takes more energy, and heat comes in at a steady rate.",1]],
+  quiz:{q:"On a flat part of the curve, what changes?",c:["PE (stored energy)","KE (motion energy)"],a:0,why:"Temperature is steady, so KE stays the same. PE changes."}},
+
+ {tag:"5",title:"Phase Changes",full:"Endothermic and exothermic",
+  idea:"<em>Endo = enter. Exo = exit.</em> Energy goes in, or energy goes out.",
+  steps:[
+   ["Breaking attractions<br>costs energy<br>(paying to unlock a door)","Breaking attractions between particles costs energy. Like paying to unlock a door."],
+   ["ENDOTHERMIC =<br>energy ENTERS<br>PE goes up","That is endothermic. Energy enters. Potential energy goes up."],
+   ["Forming attractions<br>gives energy back<br>(getting paid)","Forming attractions gives energy back. Like getting paid."],
+   ["EXOTHERMIC =<br>energy EXITS<br>PE goes down","That is exothermic. Energy exits. Potential energy goes down."],
+   ["Endo: melting ·<br>vaporizing · sublimation","Endothermic changes. Melting, vaporizing, and sublimation."],
+   ["Exo: freezing ·<br>condensing · deposition","Exothermic changes. Freezing, condensing, and deposition.",1]],
+  quiz:{q:"Freezing is…",c:["Exothermic","Endothermic"],a:0,why:"Freezing forms attractions and releases energy. That is exothermic."}},
+
+ {tag:"6",title:"Measuring Heat",full:"Three heat formulas",
+  idea:"Three formulas. <em>Look for the key word</em> to pick the right one.",
+  steps:[
+   ["Temperature changes?<br>q = mCΔT<br>C = 4.18","If the temperature changes, use q equals m C delta T. For liquid water, C is four point one eight."],
+   ["Melt or freeze?<br>q = mHf<br>Hf = 334","If it melts or freezes, use q equals m H f. For water, H f is three thirty four."],
+   ["Boil or condense?<br>q = mHv<br>Hv = 2260","If it boils or condenses, use q equals m H v. For water, H v is twenty two sixty."],
+   ["ΔT = final − start","To find delta T, subtract the start from the final temperature."],
+   ["50.0 g water, 20 → 45 °C<br>ΔT = 25<br>q = 5225 J","Example. Fifty grams of water goes from twenty to forty five. Delta T is twenty five. q is about fifty two twenty five joules."],
+   ["15.0 g ice melts<br>15.0 × 334 = 5010 J","Example. Melt fifteen grams of ice. Fifteen times three thirty four is fifty ten joules.",1]],
+  quiz:{q:"Which formula helps with boiling 4.00 g of water at 100 °C?",c:["q = mHv","q = mHf"],a:0,why:"Boiling uses q = mHv. 4.00 × 2260 = 9040 J."}},
+
+ {tag:"7",title:"Metric Conversions",full:"Table C",
+  idea:"Metric is like <em>dollars and cents</em>. 100 cents in a dollar. 1000 meters in a kilometer.",
+  steps:[
+   ["kilo = 1000<br>1 km = 1000 m","Kilo means one thousand. One kilometer is one thousand meters."],
+   ["centi: 1 m = 100 cm<br>milli: 1 L = 1000 mL","Centi means hundredth. One meter is one hundred centimeters. Milli means thousandth. One liter is one thousand milliliters."],
+   ["Smaller unit →<br>BIGGER number","Going to a smaller unit makes the number bigger."],
+   ["2.5 km → 2500 m","Two point five kilometers is twenty five hundred meters."],
+   ["450 mg → 0.450 g<br>(bigger unit, smaller number)","Four fifty milligrams is point four five zero grams. Bigger unit, smaller number."],
+   ["1 mL = 1 cm³","One milliliter is one cubic centimeter.",1]],
+  quiz:{q:"0.250 L equals how many mL?",c:["250. mL","2.50 mL"],a:0,why:"Liters to milliliters. Multiply by 1000."}},
+
+ {tag:"8",title:"Factor Label Method",full:"Trading units",
+  idea:"Factor label is like <em>trading coins</em>. Swap one unit for another until you have the one you want.",
+  steps:[
+   ["Start with what you HAVE<br>3.5 kg","Start with what you have. Three point five kilograms."],
+   ["Multiply by a fraction<br>unit to remove goes on BOTTOM","Multiply by a fraction. Put the unit you want to remove on the bottom."],
+   ["The fraction equals 1<br>1000 g / 1 kg","The fraction equals one. A thousand grams is the same as one kilogram."],
+   ["3.5 kg × (1000 g / 1 kg)<br>= 3500 g","Kilograms cancel. You are left with thirty five hundred grams."],
+   ["2.5 h → seconds<br>× 60 min/h × 60 s/min<br>= 9000 s","Two steps. Hours to minutes to seconds. The answer is nine thousand seconds."],
+   ["Cancel units.<br>Multiply top, divide bottom.","Cancel the units. Multiply the tops. Divide by the bottoms.",1]],
+  quiz:{q:"2.75 kg equals how many grams?",c:["2750 g","27.5 g"],a:0,why:"2.75 × 1000 = 2750 g."}},
+
+ {tag:"9",title:"Three Phases of Matter",full:"Solid, liquid, gas",
+  idea:"Marbles in <em>an egg carton, a bowl, and a bouncing room</em>.",
+  steps:[
+   ["SOLID =<br>marbles locked in<br>an egg carton","A solid is like marbles locked in an egg carton. It has its own shape and its own volume. The particles only vibrate."],
+   ["LIQUID =<br>marbles in a bowl","A liquid is like marbles in a bowl. It takes the shape of its container but keeps its volume. The particles slide past each other."],
+   ["GAS =<br>marbles bouncing<br>around a room","A gas is like marbles bouncing around a room. No set shape. No set volume. The particles are far apart."],
+   ["Attractions:<br>solid strongest<br>gas weakest","Attractions are strongest in a solid and weakest in a gas."],
+   ["Only gases can be<br>compressed","Only gases can be squeezed into a smaller space.",1]],
+  quiz:{q:"Which phase has a definite volume but no definite shape?",c:["Liquid","Gas"],a:0,why:"A liquid keeps its volume but takes the shape of its container."}},
+
+ {tag:"10",title:"Pressure",full:"Pressure units",
+  idea:"Pressure is <em>particles hitting the walls</em>, like balls bouncing inside a balloon.",
+  steps:[
+   ["Units: atm · kPa<br>mmHg · torr","Pressure has four units. Atmospheres, kilopascals, millimeters of mercury, and torr."],
+   ["1 atm = 101.3 kPa<br>= 760 mmHg","One atmosphere is one oh one point three kilopascals. It is also seven sixty millimeters of mercury."],
+   ["Put the unit you START with<br>on the BOTTOM","Use factor label. Put the unit you start with on the bottom."],
+   ["2.50 atm → 253 kPa","Two point five atmospheres times one oh one point three is about two fifty three kilopascals."],
+   ["380. mmHg → 0.500 atm","Three eighty millimeters of mercury is half an atmosphere.",1]],
+  quiz:{q:"570. mmHg equals how many atm?",c:["0.750 atm","1.33 atm"],a:0,why:"570 divided by 760 is 0.750 atm."}},
+
+ {tag:"11",title:"Gas Laws",full:"The combined gas law",
+  idea:"One formula. <em>Cover up what stays the same</em> and the rest is left.",
+  steps:[
+   ["P₁V₁ / T₁ = P₂V₂ / T₂<br>T must be in KELVIN","This is the combined gas law, from Table T. Temperature must always be in kelvin."],
+   ["T stays the same:<br>squeeze it → smaller<br>P₁V₁ = P₂V₂","If temperature stays the same, pressure up means volume down. Like pushing a bike pump."],
+   ["P stays the same:<br>heat it → bigger<br>V₁/T₁ = V₂/T₂","If pressure stays the same, heating makes the gas expand. Like a hot air balloon."],
+   ["V stays the same:<br>heat it → more pressure<br>P₁/T₁ = P₂/T₂","If volume stays the same, like a rigid tank, heating raises the pressure."],
+   ["6.0 L at 1.0 atm<br>squeezed to 3.0 atm<br>V₂ = 2.0 L","Example. Six liters at one atmosphere, squeezed to three atmospheres, becomes two liters."],
+   ["Rigid tank, 100 kPa<br>300 K → 400 K<br>P₂ = 133 kPa","Example. A rigid tank has a hundred kilopascals at three hundred kelvin. It is heated to four hundred kelvin. The pressure becomes about one thirty three.",1],
+   ["NEVER use °C.","Never plug in Celsius. Change to kelvin first."]],
+  quiz:{q:"4.0 L at 1.0 atm goes to 2.0 atm, same temperature. New volume?",c:["2.0 L","8.0 L"],a:0,why:"Pressure doubled, so volume is cut in half."}},
+
+ {tag:"12",title:"STP",full:"Standard temperature and pressure",
+  idea:"STP is <em>the starting line</em> for gases. Two numbers to know.",
+  steps:[
+   ["STP = Standard<br>Temperature and Pressure","STP means standard temperature and pressure."],
+   ["Temperature:<br>273 K = 0 °C","Standard temperature is two seventy three kelvin. That is zero Celsius."],
+   ["Pressure:<br>101.3 kPa = 1 atm","Standard pressure is one oh one point three kilopascals. That is one atmosphere."],
+   ["“At STP” →<br>use 273 K and 101.3 kPa","When a problem says at STP, use those two numbers."],
+   ["300. mL at STP<br>→ 50.65 kPa, 546 K<br>= 1200 mL","Example. Pressure is cut in half, so volume doubles. Kelvin doubles, so volume doubles again. The answer is twelve hundred milliliters.",1]],
+  quiz:{q:"Which one is STP?",c:["273 K and 101.3 kPa","0 K and 1 atm"],a:0,why:"Table A says 273 K and 101.3 kPa."}}
+];
+
+const MAP=`<div class="map">
+ <div class="mrow">
+  <div class="mnode"><b>Matter</b><span>element, compound, mixture</span><i>Lego bricks</i></div>
+  <div class="marr">has <u>▶</u></div>
+  <div class="mnode"><b>Energy</b><span>KE = motion, PE = stored</span><i>money in pockets</i></div>
+  <div class="marr">measured as <u>▶</u></div>
+  <div class="mnode"><b>Temperature</b><span>K = °C + 273</span><i>how fast dancers move</i></div>
+ </div>
+ <div class="mrow small">
+  <div class="mnode alt"><b>Curves &amp; phases</b><span>hill: KE changes<br>flat: PE changes<br>endo = enter · exo = exit</span></div>
+  <div class="mnode alt"><b>Heat formulas</b><span>q = mCΔT · mHf · mHv<br>look for the key word</span></div>
+  <div class="mnode alt"><b>Gases</b><span>P₁V₁/T₁ = P₂V₂/T₂<br>kelvin only · STP</span></div>
+ </div></div>`;
+/* build the shot list */
+const shots=[{t:"map",li:-1}];
+L.forEach((l,li)=>{
+  shots.push({t:"title",li});
+  shots.push({t:"idea",li});
+  l.steps.forEach((s,k)=>shots.push({t:"step",li,k}));
+  shots.push({t:"quiz",li});
+});
+shots.push({t:"map",li:-1,end:1});
+shots.push({t:"end"});
+
+const $=id=>document.getElementById(id);
+const shotEl=$("shot"),sub=$("sub"),hudL=$("hudL"),hudR=$("hudR"),pace=$("pace"),scrub=$("scrub");
+let i=-1,playing=false,timer=null,voiceOn=false,sfxOn=false,score=0,answered={},tries=0;
+
+L.forEach((l,li)=>{
+  const b=document.createElement("button");b.className="seg";b.setAttribute("aria-label","Lesson "+l.tag+": "+l.full);
+  b.innerHTML=`<i></i><span>${l.tag}</span>`;b.onclick=()=>jump(shots.findIndex(s=>s.li===li));scrub.appendChild(b);
+});
+
+/* ---------- sound (Web Audio, starts after a click) ---------- */
+let ac=null;
+function audio(){ if(!ac){ try{ac=new (window.AudioContext||window.webkitAudioContext)();}catch(e){} } if(ac&&ac.state==="suspended") ac.resume(); return ac; }
+function tone(f,d,type="sine",v=.08,when=0,slide){ const a=audio(); if(!a||!sfxOn) return;
+  const o=a.createOscillator(),g=a.createGain(),t=a.currentTime+when; o.type=type; o.frequency.setValueAtTime(f,t);
+  if(slide) o.frequency.exponentialRampToValueAtTime(slide,t+d);
+  g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(v,t+.02); g.gain.exponentialRampToValueAtTime(0.0001,t+d);
+  o.connect(g).connect(a.destination); o.start(t); o.stop(t+d+.05); }
+const fx={
+  boom(){ tone(70,1.2,"sine",.25,0,38); tone(140,.9,"triangle",.05,0,70); },
+  whoosh(){ tone(300,.35,"sawtooth",.025,0,1200); },
+  tick(){ tone(880,.08,"square",.03); },
+  ding(){ tone(660,.25,"sine",.1); tone(990,.4,"sine",.08,.12); },
+  win(){ [523,659,784,1046].forEach((f,k)=>tone(f,.35,"triangle",.08,k*.11)); },
+  miss(){ tone(220,.3,"sawtooth",.04,0,150); }
+};
+
+/* ---------- ambient particles ---------- */
+const cv=$("fx"),cx=cv.getContext("2d");let P=[];
+function sizeCv(){ const r=cv.getBoundingClientRect(),d=Math.min(2,window.devicePixelRatio||1); cv.width=r.width*d; cv.height=r.height*d; cx.setTransform(d,0,0,d,0,0);
+  P=Array.from({length:Math.round(r.width/14)},()=>({x:Math.random()*r.width,y:Math.random()*r.height,r:Math.random()*1.6+.3,v:Math.random()*.25+.05,a:Math.random()*.5+.1})); }
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function loop(){ const r=cv.getBoundingClientRect(); cx.clearRect(0,0,r.width,r.height);
+  for(const p of P){ p.y-=p.v; if(p.y<-4){p.y=r.height+4;p.x=Math.random()*r.width;} cx.globalAlpha=p.a; cx.fillStyle="#F58426"; cx.beginPath(); cx.arc(p.x,p.y,p.r,0,6.3); cx.fill(); }
+  if(!reduce) requestAnimationFrame(loop); }
+sizeCv(); loop(); addEventListener("resize",sizeCv);
+
+/* ---------- rendering ---------- */
+function flash(){ return; const f=$("flash"); f.classList.remove("go"); void f.offsetWidth; f.classList.add("go"); }
+function setSub(t){ sub.innerHTML=t||""; }
+function render(){
+  const s=shots[i]; const l=L[s.li]||{};
+  if(s.t!=="end"&&s.t!=="map"){ hudL.innerHTML=`Lesson <b>${l.tag}</b> · ${l.full}`; }
+  [...scrub.children].forEach((b,k)=>{
+    const idx=shots.map((x,n)=>x.li===k?n:-1).filter(n=>n>=0); const a=idx[0],z=idx[idx.length-1];
+    const p= i>z?100: i<a?0: Math.round(100*(i-a+1)/(z-a+1));
+    b.querySelector("i").style.setProperty("--p",p+"%"); b.classList.toggle("cur",s.li===k);
+  });
+  $("spot").style.setProperty("--sx",(40+Math.random()*20)+"%");
+  if(s.t==="map"){
+    hudL.textContent="The map"; hudR.textContent=s.end?"Put it together":"Start here";
+    shotEl.innerHTML=MAP; setSub(s.end?"It all connects. Matter has energy. Temperature measures it. Heat and gases follow the same rules.":"The whole exam on one page. Come back to it any time."); fx.whoosh(); return s.end?"Here is the whole exam on one map.":"Here is the map of the whole exam.";
+  }
+  if(s.t==="title"){
+    hudR.textContent="Chapter "+(s.li+1)+" of "+L.length;
+    shotEl.innerHTML=`<div><div class="kicker in">Chapter ${s.li+1}</div><div class="chapno zoom">${l.tag}</div><div class="chaptitle in2">${l.title}</div></div>`;
+    setSub(""); fx.boom(); flash(); return l.full;
+  }
+  if(s.t==="idea"){
+    hudR.textContent="The big idea";
+    shotEl.innerHTML=`<div><div class="idea-lbl in">💡 The big idea</div><div class="idea in2">${l.idea}</div></div>`;
+    setSub(""); fx.whoosh(); return l.idea;
+  }
+  if(s.t==="step"){
+    const st=l.steps[s.k],pvs=l.steps.slice(Math.max(0,s.k-2),s.k).map(x=>x[0]);
+    hudR.textContent="Step "+(s.k+1)+" of "+l.steps.length;
+    shotEl.innerHTML=`<div class="stepwrap">${pvs.map(p=>`<div class="prev">${p}</div><div class="arrow">▼</div>`).join("")}<div class="now focus${st[2]?" ans":""}">${st[0]}</div></div>`;
+    setSub(st[1]); st[2]?(fx.ding(),flash()):fx.tick(); return st[1];
+  }
+  if(s.t==="quiz"){
+    const q=l.quiz; tries=0; hudR.textContent="Your turn";
+    shotEl.innerHTML=`<div class="quiz"><div class="kicker in">⚡ Your turn</div><div class="q in2">${q.q}</div>
+      <div class="choices in3">${q.c.map((c,n)=>`<button class="choice" data-n="${n}">${c}</button>`).join("")}</div><div class="fb" id="fb"></div></div>`;
+    setSub("Tap your answer. Take your time. You can try again.");
+    shotEl.querySelectorAll(".choice").forEach(b=>b.onclick=()=>answer(+b.dataset.n,b));
+    fx.whoosh(); return "Your turn. "+q.q.replace("=","equals").replace("?","what");
+  }
+  hudL.textContent="Review complete"; hudR.textContent="";
+  shotEl.innerHTML=`<div class="end"><div class="kicker in">That's a wrap</div><div class="big zoom">You finished<br>the review</div>
+    <div class="score in2">Your Turn score: ${score} of ${L.length}</div><p class="note in3" style="margin-top:14px">Tap any chapter below to rewatch it.</p></div>`;
+  setSub(""); fx.win(); flash(); setPlay(false,true); return "You finished the review. Great work.";
+}
+function answer(n,btn){
+  const s=shots[i],q=L[s.li].quiz,fb=$("fb");
+  if(n===q.a){
+    btn.classList.add("right"); shotEl.querySelectorAll(".choice").forEach(b=>b.disabled=true);
+    if(!answered[s.li]){ answered[s.li]=1; score++; }
+    fb.style.color="var(--mint)"; fb.textContent="✓ Nice work! "+q.why+(playing?"":" Press Next to keep going."); setSub(q.why); fx.win(); flash();
+    clearTimeout(timer); say("Nice work. "+q.why, ()=>{ if(playing) next(); }, 1.6, s.li+"-ok");
+  } else {
+    if(answered[s.li]===undefined) answered[s.li]=0;
+    btn.classList.add("wrong"); btn.disabled=true; fb.style.color="var(--ember)"; tries++; fb.textContent=tries>=1?"Not quite. Here is a hint: "+q.why:"Not quite. That is okay. Look again and try another one."; if(tries>=1) setSub(q.why); fx.miss();
+  }
+}
+
+/* ---------- timing & narration ---------- */
+let curAudio=null;
+function stopAudio(){ if(curAudio){ curAudio.onended=null; curAudio.onerror=null; curAudio.pause(); curAudio=null; } }
+function keyFor(s){ return s.t==="end"?"end":s.t==="map"?(s.end?"map-end":"map-start"):s.t==="title"?s.li+"-title":s.t==="idea"?s.li+"-idea":s.t==="step"?s.li+"-s"+s.k:s.li+"-q"; }
+function say(text,cb,mult=1,key){
+  clearTimeout(timer); stopAudio(); const clean=String(text).replace(/<[^>]+>/g," ");
+  const wait=()=>{ timer=setTimeout(cb,Math.max(2600,clean.length*58)*(+pace.value)*mult); };
+  if(!voiceOn||!key) return wait();
+  const a=new Audio("audio/"+key+".mp3"); curAudio=a;
+  a.onended=()=>{ curAudio=null; timer=setTimeout(cb,500*(+pace.value)); };
+  a.onerror=()=>{ curAudio=null; wait(); };
+  const p=a.play(); if(p&&p.catch) p.catch(()=>{ curAudio=null; wait(); });
+}
+function stopAll(){ clearTimeout(timer); stopAudio(); }
+function show(n){
+  stopAll(); i=Math.max(0,Math.min(shots.length-1,n)); const line=render();
+  const key=keyFor(shots[i]);
+  if(shots[i].t==="quiz"){ if(voiceOn) say(line,()=>{},1,key); return; }   // quiz waits for an answer
+  if(playing) say(line,next,shots[i].t==="title"?.8:1,key); else if(voiceOn) say(line,()=>{},1,key);
+}
+function next(){ if(i<shots.length-1) show(i+1); }
+function jump(n){ audio(); show(n); }
+function setPlay(p,silent){ playing=p; $("play").textContent=p?"❚❚ Stop auto-play":"▶ Auto-play";
+  if(silent) return; audio(); if(p){ if(i<0||shots[i].t==="end"){ score=0; answered={}; show(0); } else show(i); } else stopAll(); }
+
+$("bigplay").onclick=()=>{ audio(); score=0; answered={}; show(0); };
+$("rep").onclick=()=>{ audio(); if(i>=0) show(i); };
+$("play").onclick=()=>setPlay(!playing);
+$("next").onclick=()=>{ audio(); if(i<0) show(0); else next(); };
+$("prev").onclick=()=>{ audio(); if(i>0) show(i-1); };
+$("voice").onclick=e=>{ voiceOn=!voiceOn; e.currentTarget.classList.toggle("on",voiceOn); e.currentTarget.setAttribute("aria-pressed",voiceOn); if(!voiceOn) stopAudio(); if(playing&&i>=0) show(i); };
+$("sfx").onclick=e=>{ sfxOn=!sfxOn; e.currentTarget.classList.toggle("on",sfxOn); e.currentTarget.setAttribute("aria-pressed",sfxOn); };
+$("fs").onclick=()=>{ const sc=$("screen"); try{ document.fullscreenElement?document.exitFullscreen():sc.requestFullscreen().catch(()=>{}); }catch(e){} };
+document.addEventListener("fullscreenchange",()=>setTimeout(sizeCv,100));
+document.addEventListener("keydown",e=>{ if(e.target.tagName==="SELECT"||e.target.classList.contains("choice")) return;
+  if(e.key===" "){e.preventDefault();setPlay(!playing);} if(e.key==="ArrowRight") $("next").click(); if(e.key==="ArrowLeft") $("prev").click(); });
+</script>
+
+</body></html>
